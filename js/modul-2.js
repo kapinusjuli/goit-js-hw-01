@@ -466,28 +466,43 @@ const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
 */
 
-unction addLogin (logins) {
+function isLoginValid (login, min = 4, max = 16) {
   // Write code under this line
-  for (log = 0; log < logins.lenth; log += 1) {
-    console.log(logins[log].lenth >= 4 || logins[log].lenth <= 16);
-  }
+  let isLoginValid;
+  (login.length < min && login.length > max) ? isLoginValid = true : isLoginValid = false;
+  
+  return isLoginValid;
+  console.log(isLoginValid);
+  
 }
-
-//function isLoginUnique  (allLogins, login) {
- ////// 'use strict';
-  // Write code under this line
-  
-//}
-
-//function addLogin (allLogins, login) {
+function isLoginUnique  (allLogins, login) {
   'use strict';
- // const SUCCESS = 'Логин успешно добавлен!';
- // const REFUSAL = 'Такой логин уже используется!';
- // const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
- // let message;
+  // Write code under this line
+  let isLoginUnique = true;
+  for ( const element of allLogins) {
+  if (login === element) {isLoginUnique = false;}
+  }
+  return isLoginUnique;
+}
+function addLogin (allLogins, login) {
+  'use strict';
+  const SUCCESS = 'Логин успешно добавлен!';
+  const REFUSAL = 'Такой логин уже используется!';
+  const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
+  let message;
   // Write code under this line    
+  if (isLoginValid === true) {message = ERROR;} 
   
-//}
+  else if (isLoginUnique(allLogins, login)) {
+    allLogins.push(login);
+    message = SUCCESS;
+    //console.log(message);
+  } else {
+    message = REFUSAL;
+    //console.log(message);
+    }
+   return message;
+}
 
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
