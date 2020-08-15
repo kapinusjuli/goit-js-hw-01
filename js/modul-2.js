@@ -465,25 +465,32 @@ const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 |
 
 */
+let loginLength;
+const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
-function isLoginValid (login, min = 4, max = 16) {
+function isLoginValid (allLogins, login) {
   // Write code under this line
-  let isLoginValid;
-  (login.length < min && login.length > max) ? isLoginValid = true : isLoginValid = false;
+  const min = 4; 
+  const max = 16;
+  loginLength = login.length;
+  const result = loginLength < max && loginLength > min;
+  console.log(loginLength);
   
-  return isLoginValid;
-  console.log(isLoginValid);
-  
+
+  return (result);
 }
+
+//console.log(isLoginValid(logins, 'Ajax'));
+
+
 function isLoginUnique  (allLogins, login) {
   'use strict';
   // Write code under this line
-  let isLoginUnique = true;
-  for ( const element of allLogins) {
-  if (login === element) {isLoginUnique = false;}
-  }
-  return isLoginUnique;
+  return allLogins.includes(login);
 }
+//console.log(isLoginUnique(logins, 'Ajax'));
+
+
 function addLogin (allLogins, login) {
   'use strict';
   const SUCCESS = 'Логин успешно добавлен!';
@@ -491,21 +498,18 @@ function addLogin (allLogins, login) {
   const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
   let message;
   // Write code under this line    
-  if (isLoginValid === true) {message = ERROR;} 
-  
-  else if (isLoginUnique(allLogins, login)) {
-    allLogins.push(login);
-    message = SUCCESS;
-    //console.log(message);
-  } else {
-    message = REFUSAL;
-    //console.log(message);
-    }
-   return message;
+  if (isLoginValid === false) {
+       message = ERROR;
+     } else if (isLoginUnique === false) {
+       message = REFUSAL;
+         } else {
+           message = SUCCESS;
+           }
+           return message;
 }
 
-const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
-
+//const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
+//let login = logins[login];
  console.log(addLogin(logins, 'Ajax')); 
 // 'Логин успешно добавлен!'
 
