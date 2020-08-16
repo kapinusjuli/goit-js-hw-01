@@ -473,11 +473,13 @@ function isLoginValid (allLogins, login) {
   const min = 4; 
   const max = 16;
   loginLength = login.length;
-  const result = loginLength < max && loginLength > min;
+  const result = loginLength <= max && loginLength >= min;
   console.log(loginLength);
   
-
+  console.log (result);
   return (result);
+ 
+  
 }
 
 //console.log(isLoginValid(logins, 'Ajax'));
@@ -486,7 +488,7 @@ function isLoginValid (allLogins, login) {
 function isLoginUnique  (allLogins, login) {
   'use strict';
   // Write code under this line
-  return allLogins.includes(login);
+  return !allLogins.includes(login);
 }
 //console.log(isLoginUnique(logins, 'Ajax'));
 
@@ -498,13 +500,15 @@ function addLogin (allLogins, login) {
   const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
   let message;
   // Write code under this line    
-  if (isLoginValid === false) {
+  if (!isLoginValid(allLogins, login)) {
        message = ERROR;
-     } else if (isLoginUnique === false) {
+     } else if (!isLoginUnique(allLogins, login)) {
        message = REFUSAL;
          } else {
+           allLogins.push(login);
            message = SUCCESS;
            }
+           console.log(allLogins);
            return message;
 }
 
@@ -513,7 +517,7 @@ function addLogin (allLogins, login) {
  console.log(addLogin(logins, 'Ajax')); 
 // 'Логин успешно добавлен!'
 
- console.log(addLogin(logins, 'robotGoogles')); 
+console.log(addLogin(logins, 'robotGoogles')); 
 // 'Такой логин уже используется!'
 
  console.log(addLogin(logins, 'Zod'));
