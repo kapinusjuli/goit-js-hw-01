@@ -83,20 +83,24 @@ console.log(countProps({a:1, b:1, c:1, d:1, e:1})); // 5
 Напиши функцию findBestEmployee(employees), которая принимает объект сотрудников и возвращает имя самого продуктивного (который выполнил больше всех задач). Сотрудники и кол-во выполненных задач содержатся как свойства объекта в формате "имя":"кол-во задач".
 */
 
+/*
 const findBestEmployee = function (employees) {
   'use strict';
-  // Write code under this line
-  let best = 0;
-  const keys = Object.keys (employees);
-  for (key of keys) {
-    console.log(key);
+let best = 0;
+  let key = '';
+  const entries = Object.entries (employees);
+  
+  for (const entry of entries) {
+       
+      if (entry[1] > best) { 
+      best = entry[1];
+      key = entry[0];
 
-  //if (employee[key] > best) { 
-  //    best = employee[key];
-  //} 
-  //return best;
+  } 
 };
-}
+return key;
+ };  // Write code under this line};
+
 // Объекты и ожидаемый результат
 const developers = {
   ann: 29,
@@ -121,6 +125,86 @@ const sellers = {
   kiwi: 19,
   chelsy: 38,
 }
-
 console.log(findBestEmployee(sellers)); 
-// 'lux'
+// 'lux'  
+
+*/
+
+
+/*
+Задача 3-4
+Суммирование значений свойств объекта
+Напиши функцию countTotalSalary(employees) принимающую объект зарплат. Функция считает общую сумму зарплаты работников и возвращает ее. Каждое поле объекта, передаваемого в функцию, имеет вид "имя":"зарплата".
+*/
+/*
+const countTotalSalary = function(employees) {
+  'use strict';
+  // Write code under this line
+  let totalSalary = 0;
+  const values = Object.values (employees);
+  for (const value of values) {
+   totalSalary += value;
+   
+}
+return totalSalary;
+};
+
+// Объекты и ожидаемый результат
+const developers = {
+    mango: 300,
+    poly: 250,
+    alfred: 450,
+};
+console.log(countTotalSalary(developers));
+// 1000
+
+const supports = {
+  kiwi: 200,
+  lux: 150,
+  chelsy: 150,
+}
+console.log(countTotalSalary(supports));
+// 500
+*/
+
+/*
+Задача 3-5
+Оператор in и метод push
+Напиши функцию getAllPropValues(arr, prop), которая получает массив объектов и имя свойства.
+
+Функция возвращает массив значений определенного свойства prop из каждого объекта в массиве.
+
+Используй метод push для добавления значения в массив и оператор in для проверки наличия свойства в объекте.
+
+*/
+
+function getAllPropValues (array, prop) {
+  'use strict';
+  let propertie;
+  // Write code under this line 
+  for (const product of products) {
+    //propertie = products.prop;
+    console.log (products.name);
+  }
+  //return propertie;
+}
+
+// Объекты и ожидаемый результат
+const products = [
+    { name: 'Радар', price: 1300, quantity: 4 },
+    { name: 'Радар', price: 1280, quantity: 2 },
+    { name: 'Радар', price: 1320, quantity: 1 },
+    { name: 'Сканер', price: 2700, quantity: 1 },
+    { name: 'Сканер', price: 2500, quantity: 3 },
+    { name: 'Дроид', price: 400, quantity: 7 },
+    { name: 'Захват', price: 1200, quantity: 2 },
+]; 
+
+console.log(getAllPropValues(products, 'name'));
+// ['Радар', 'Радар', 'Радар', 'Сканер', 'Сканер', 'Дроид', 'Захват']
+
+console.log(getAllPropValues(products, 'quantity'));
+// [4, 2, 1, 1, 3, 7, 2]
+
+console.log(getAllPropValues(products, 'category'));
+//  []
