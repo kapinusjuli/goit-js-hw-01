@@ -1,13 +1,23 @@
 /*
 Задача 5-1
 function-constructor
-Напиши функцию-конструктор Account, которая создает объект со свойствами login и email.
+Напиши функцию-конструктор Account, 
+которая создает объект со свойствами login и email.
 
-В prototype функции-конструктора добавь метод getInfo(), который возвращает строку со значениями свойств login и email объекта.
+В prototype функции-конструктора добавь метод getInfo(), 
+который возвращает строку со значениями свойств login и email объекта.
 */
 
 // Write code under this line
-  
+  const Account = function({login, email} = {}) {
+      this.login = login;
+      this.email = email;
+  }
+  Account.prototype.getInfo = function(newLogin, newEmail) {
+    this.login = newLogin;
+      this.email = newEmail;
+      return Object.value;
+  };
 
 console.log(typeof Account.prototype.getInfo);
 // 'function'

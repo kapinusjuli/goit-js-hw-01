@@ -16,7 +16,7 @@ const Car = function ({ brand, model, price } = {}) {
     this.brand = brand;
     this.model = model;
     this.price = price;
-  
+   
     // 3. В свойство this.__proto__ записывается ссылка на обьект Car.prototype
     //    тоесть Car.prototype это ПРОТОТИП будущего обьекта (экземпляра)
   
@@ -32,15 +32,15 @@ const Car = function ({ brand, model, price } = {}) {
     this.price = newPrice;
   };
   
-  // console.log(Car.prototype);
+  console.log(Car.prototype);
   
   // 1. Если функция вызывается через new, создаётся пустой объект
-  // const myCar = new Car({
-  //   brand: 'Audi',
-  //   model: 'Q3',
-  //   price: 35000,
-  // });
-  // console.log(myCar);
+  const myCar = new Car({
+    brand: 'Audi',
+    model: 'Q3',
+    price: 35000,
+  });
+  console.log(myCar);
   
   // myCar.sayHi();
   // myCar.changePrice(10000);
