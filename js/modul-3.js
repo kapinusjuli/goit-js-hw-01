@@ -177,16 +177,18 @@ console.log(countTotalSalary(supports));
 Используй метод push для добавления значения в массив и оператор in для проверки наличия свойства в объекте.
 
 */
-
+/*
 function getAllPropValues (array, prop) {
   'use strict';
-  let propertie;
   // Write code under this line 
-  for (const product of products) {
-    //propertie = products.prop;
-    console.log (products.name);
+  let property = [];
+  for (const arr of array) {
+    if (prop in arr){
+      property.push(arr[prop]);
+    } 
+    //console.log (products.name);
   }
-  //return propertie;
+  return property;
 }
 
 // Объекты и ожидаемый результат
@@ -200,6 +202,7 @@ const products = [
     { name: 'Захват', price: 1200, quantity: 2 },
 ]; 
 
+//console.log (products.name);
 console.log(getAllPropValues(products, 'name'));
 // ['Радар', 'Радар', 'Радар', 'Сканер', 'Сканер', 'Дроид', 'Захват']
 
@@ -208,3 +211,62 @@ console.log(getAllPropValues(products, 'quantity'));
 
 console.log(getAllPropValues(products, 'category'));
 //  []
+
+*/
+
+/*
+Задача 3-6
+Суммирование значений свойства из массива объектов
+Напиши функцию calculateTotalPrice(allProdcuts, productName), которая получает массив объектов и имя продукта (значение свойства name). Возвращает общую стоимость продукта (цена умноженная на количество).
+
+Вызовы функции для проверки работоспособности твоей реализации.
+
+// calculateTotalPrice(products, 'Радар'));
+// 9080
+
+// calculateTotalPrice(products, 'Сканер')); // 10200
+
+// calculateTotalPrice(products, 'Захват')); // 2400
+
+// calculateTotalPrice(products, 'Дроид')); // 2800
+
+*/
+
+function calculateTotalPrice (array, prop) {
+  'use strict';
+  // Write code under this line
+  
+//const keys = Object.keys(array);
+let value = 0;
+for (const product of products) {
+  //console.log(product.name);
+  if (product.name === prop) {
+    value += product.price * product.quantity
+  }
+}
+return value
+
+}
+
+// Объекты и ожидаемый результат
+const products = [
+    { name: 'Радар', price: 1300, quantity: 4 },
+    { name: 'Радар', price: 1280, quantity: 2 },
+    { name: 'Радар', price: 1320, quantity: 1 },
+    { name: 'Сканер', price: 2700, quantity: 1 },
+    { name: 'Сканер', price: 2500, quantity: 3 },
+    { name: 'Дроид', price: 400, quantity: 7 },
+    { name: 'Захват', price: 1200, quantity: 2 }
+]; 
+
+console.log(calculateTotalPrice(products, 'Радар'));  
+// 9080
+
+console.log(calculateTotalPrice(products, 'Сканер')); 
+// 10200
+
+console.log(calculateTotalPrice(products, 'Захват'));
+// 2400
+
+console.log(calculateTotalPrice(products, 'Дроид')); 
+// 2800
